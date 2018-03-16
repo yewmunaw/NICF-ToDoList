@@ -17,7 +17,7 @@ public class run {
 		while(true)
 		{
 			switch( menu1())
-			{
+			{ 
 			case 1:
 				Add();
 				break;
