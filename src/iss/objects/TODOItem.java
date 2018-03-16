@@ -6,6 +6,7 @@ public class TODOItem implements Comparator<TODOItem>{
 
 	private String description;
 	private int priority=0;
+	private String date;
 	
 	
 	public TODOItem(String str)
@@ -21,7 +22,7 @@ public class TODOItem implements Comparator<TODOItem>{
 	
 	public String toString()
 	{
-		return description;
+		return "- "+description +" | Date:"+date+" | Priority:"+priority;
 	}
 
 	public String getDescription() {
@@ -40,6 +41,14 @@ public class TODOItem implements Comparator<TODOItem>{
 		this.priority = priority;
 	}
 	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	@Override
 	public int compare(TODOItem o1, TODOItem o2) {
 

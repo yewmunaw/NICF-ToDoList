@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
@@ -17,7 +18,7 @@ public class todoTest  {
 	private String s2 = "buy bread again";
 	
 	
-	
+	@Test
 	public void testAddItem()
 	{		 
 		System.out.println("Testing Add Item...");
@@ -29,9 +30,9 @@ public class todoTest  {
 		
 		//verify
 		List<TODOItem> actual = TDL.retrive();
+		System.out.println(Arrays.toString(actual.toArray()));
 		
-		
-		assertTrue(actual.get(0).toString().equals(s1));
+		assertTrue(actual.get(0).getDescription().equals(s1));
 	}
 	
 	@Test
@@ -44,9 +45,26 @@ public class todoTest  {
 		TDL.remove(s1);
 
 		//verify
-		List<TODOItem> ls = TDL.retrive();
+		List<TODOItem> actual = TDL.retrive();
+		System.out.println(Arrays.toString(actual.toArray()));
+		
+		assertFalse("Item("+s1+") found",actual.contains(new TODOItem(s1)));
+	}
+	
+	@Test
+	public void testEditItem()
+	{
+		System.out.println("Testing Edit Item...");
+		TODOList TDL = new TODOList();
+		
+		//exercise
+		TDL.remove(s1);
 
-		assertFalse("Item("+s1+") found",ls.contains(new TODOItem(s1)));
+		//verify
+		List<TODOItem> actual = TDL.retrive();
+		System.out.println(Arrays.toString(actual.toArray()));
+		
+		assertFalse("Item("+s1+") found",actual.contains(new TODOItem(s1)));
 	}
 	
 	@Test
@@ -62,8 +80,10 @@ public class todoTest  {
 		//verify
 		List<TODOItem> actual = TDL.retrive();
 
-		assertTrue(actual.get(0).toString().equals(s1));
-		assertTrue(actual.get(1).toString().equals(s2));
+		System.out.println(Arrays.toString(actual.toArray()));
+		
+		assertTrue(actual.get(0).getDescription().equals(s1));
+		assertTrue(actual.get(1).getDescription().equals(s2));
 	}
 	
 
